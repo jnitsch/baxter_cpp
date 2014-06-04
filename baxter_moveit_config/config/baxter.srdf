@@ -31,12 +31,12 @@
         <group name="right_arm" />
         <group name="left_arm" />
     </group>
-    <group name="left_hand">
+    <!--group name="left_hand">
         <link name="left_hand" />
         <link name="left_gripper" />
         <link name="left_gripper_l_finger" />
         <link name="left_gripper_r_finger" />
-    </group>
+    </group-->
     <group name="right_hand">
         <link name="right_hand" />
         <link name="right_gripper" />
@@ -113,7 +113,7 @@
         <joint name="right_w2" value="-0.18868" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="left_hand_eef" parent_link="left_wrist" group="left_hand" parent_group="left_arm" />
+    <!--end_effector name="left_hand_eef" parent_link="left_wrist" group="left_hand" parent_group="left_arm" /-->
     <end_effector name="right_hand_eef" parent_link="right_wrist" group="right_hand" parent_group="right_arm" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="vjoint" type="fixed" parent_frame="vjoint_frame" child_link="base" />
@@ -141,9 +141,9 @@
     <disable_collisions link1="collision_head_link_2" link2="screen" reason="Default" />
     <disable_collisions link1="collision_head_link_2" link2="sonar_ring" reason="Default" />
     <disable_collisions link1="collision_head_link_2" link2="torso" reason="Adjacent" />
-    <disable_collisions link1="head" link2="left_gripper_base" reason="Never" />
+    <!-- disable_collisions link1="head" link2="left_gripper_base" reason="Never" />
     <disable_collisions link1="head" link2="left_gripper_l_finger" reason="Never" />
-    <disable_collisions link1="head" link2="left_gripper_r_finger" reason="Never" />
+    <disable_collisions link1="head" link2="left_gripper_r_finger" reason="Never" / -->
     <disable_collisions link1="head" link2="left_hand_camera" reason="Never" />
     <disable_collisions link1="head" link2="left_hand_range" reason="Never" />
     <disable_collisions link1="head" link2="left_lower_elbow" reason="Never" />
@@ -163,7 +163,7 @@
     <disable_collisions link1="head" link2="screen" reason="Adjacent" />
     <disable_collisions link1="head" link2="sonar_ring" reason="Never" />
     <disable_collisions link1="head" link2="torso" reason="Adjacent" />
-    <disable_collisions link1="left_gripper" link2="left_gripper_base" reason="Adjacent" />
+    <!-- disable_collisions link1="left_gripper" link2="left_gripper_base" reason="Adjacent" />
     <disable_collisions link1="left_gripper" link2="left_gripper_l_finger" reason="Adjacent" />
     <disable_collisions link1="left_gripper" link2="left_gripper_r_finger" reason="Adjacent" />
     <disable_collisions link1="left_gripper" link2="left_hand" reason="Default" />
@@ -209,7 +209,7 @@
     <disable_collisions link1="left_gripper_r_finger" link2="left_upper_forearm_visual" reason="Never" />
     <disable_collisions link1="left_gripper_r_finger" link2="left_wrist" reason="Never" />
     <disable_collisions link1="left_gripper_r_finger" link2="screen" reason="Never" />
-    <disable_collisions link1="left_gripper_r_finger" link2="sonar_ring" reason="Never" />
+    <disable_collisions link1="left_gripper_r_finger" link2="sonar_ring" reason="Never" / -->
     <disable_collisions link1="left_hand" link2="left_hand_camera" reason="Adjacent" />
     <disable_collisions link1="left_hand" link2="left_hand_range" reason="Adjacent" />
     <disable_collisions link1="left_hand" link2="left_lower_elbow" reason="Never" />
@@ -448,8 +448,8 @@
     <disable_collisions link1="right_upper_elbow" link2="right_upper_shoulder" reason="User" />
     <disable_collisions link1="left_upper_elbow_visual" link2="left_upper_forearm" reason="User" />
     <disable_collisions link1="right_upper_elbow_visual" link2="right_upper_forearm" reason="User" />
-    <disable_collisions link1="left_gripper_l_finger" link2="pedestal" reason="User" />
-    <disable_collisions link1="left_gripper_r_finger" link2="pedestal" reason="User" />
+    <!-- disable_collisions link1="left_gripper_l_finger" link2="pedestal" reason="User" />
+    <disable_collisions link1="left_gripper_r_finger" link2="pedestal" reason="User" / -->
     <disable_collisions link1="right_gripper_l_finger" link2="pedestal" reason="User" />
     <disable_collisions link1="right_gripper_r_finger" link2="pedestal" reason="User" />
 

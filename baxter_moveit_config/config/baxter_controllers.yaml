@@ -33,9 +33,3 @@ controller_list:
     default: true
     joints:
       - right_gripper_l_finger_joint
-  - name: /robot/baxter_left_gripper_action
-    action_ns: gripper_action
-    type: GripperCommand
-    default: true
-    joints:
-      - left_gripper_l_finger_joint
