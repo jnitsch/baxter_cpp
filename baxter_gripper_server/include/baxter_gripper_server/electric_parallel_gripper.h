@@ -104,6 +104,7 @@ protected:
   double finger_joint_stroke_; // cache the diff between upper and lower limits
   double finger_joint_midpoint_; // cache the mid point of the joint limits
   std::string arm_name_; // Remember which arm this class is for
+  int sequence_;
 
 public:
 
@@ -113,7 +114,8 @@ public:
       arm_name_(arm_name),
       in_simulation_(in_simulation),
       cuff_grasp_pressed_(false),
-      cuff_ok_pressed_(false)
+      cuff_ok_pressed_(false),
+      sequence_(0)
   {
     ROS_DEBUG_STREAM_NAMED(arm_name_, "Baxter Electric Parallel Gripper starting " << arm_name_);
 
@@ -121,7 +123,7 @@ public:
     command_topic_ = nh_.advertise<baxter_core_msgs::EndEffectorCommand>("/robot/end_effector/" + arm_name_
                        + "_gripper/command",10);
 
-    command_msg_.id = 65664;
+    command_msg_.id = 65538;
     command_msg_.sender = "baxter_gripper_server";
 
     // Start the subscribers
@@ -308,7 +310,7 @@ public:
 
       command_msg_.command = baxter_core_msgs::EndEffectorCommand::CMD_CALIBRATE;
       command_topic_.publish(command_msg_);
-
+      sequence_++;
       ros::spinOnce();
       ros::Duration(0.05).sleep();
     }
@@ -485,6 +487,7 @@ public:
 
     command_msg_.command = baxter_core_msgs::EndEffectorCommand::CMD_RESET;
     command_topic_.publish(command_msg_);
+    sequence_++;
 
     ros::Duration(0.05).sleep();
   }
@@ -544,6 +547,7 @@ public:
 
       command_msg_.command = baxter_core_msgs::EndEffectorCommand::CMD_RELEASE;
       command_topic_.publish(command_msg_);
+      sequence_++;
 
       ros::Duration(MSG_PULSE_SEC).sleep();
       ros::spinOnce();
@@ -563,9 +567,14 @@ public:
     // Send command several times to be safe
     for (std::size_t i = 0; i < GRIPPER_MSG_RESEND; ++i)
     {
-
-      command_msg_.command = baxter_core_msgs::EndEffectorCommand::CMD_GRIP;
+      command_msg_.sequence = sequence_;
+      command_msg_.command = baxter_core_msgs::EndEffectorCommand::CMD_GO;
+      std::stringstream ss;
+      ss.str() = "";
+      ss << "{\"position\": " << 0.0 << "}";
+      command_msg_.args = ss.str();
       command_topic_.publish(command_msg_);
+      sequence_++;
 
       ros::Duration(MSG_PULSE_SEC).sleep();
       ros::spinOnce();

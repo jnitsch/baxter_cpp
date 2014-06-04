@@ -65,15 +65,14 @@ protected:
 
   // Gripper objects
   baxter_gripper_server::ElectricParallelGripper right_gripper;
-  baxter_gripper_server::ElectricParallelGripper left_gripper;
+
 
 public:
 
   // Constructor
   GripperActionServer(bool in_simulation, bool run_test)
     : in_simulation_(in_simulation),
-      right_gripper("baxter_right_gripper_action/gripper_action","right", in_simulation),
-      left_gripper("baxter_left_gripper_action/gripper_action","left", in_simulation)
+      right_gripper("baxter_right_gripper_action/gripper_action","right", in_simulation)
   {
     // Get from either gripper if we are in simulation
     in_simulation_ = right_gripper.isInSimulation();
@@ -110,7 +109,6 @@ public:
   void runTest()
   {
     // Error check gripper
-    left_gripper.hasError();
     right_gripper.hasError();
 
     bool open = false;
@@ -118,13 +116,11 @@ public:
     {
       if(open)
       {
-        left_gripper.openGripper();
         right_gripper.openGripper();
         open = false;
       }
       else
       {
-        left_gripper.closeGripper();
         right_gripper.closeGripper();
         open = true;
       }
@@ -141,8 +137,6 @@ public:
     // Create state message
     sensor_msgs::JointState state;
     right_gripper.populateState(state);
-    left_gripper.populateState(state);
-
     joint_state_topic_.publish(state);
   }
 
