@@ -25,7 +25,7 @@
 					    velocity_joint_mode_controller
 					    right_velocity_trajectory_controller
 					    left_velocity_trajectory_controller
-					    " />
+					    " >
 
     <!-- convert joint states to TF transforms -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
