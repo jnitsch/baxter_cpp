@@ -36,7 +36,7 @@
    Desc:   My office with Baxter having no left arm workspace but full right arm workspace
 */
 
-#include <moveit_simple_grasps/visual_tools.h> // simple tool for showing grasps
+#include <moveit_visual_tools/visual_tools.h> // simple tool for showing grasps
 
 #ifndef BAXTER_PICK_PLACE__CUSTOM_ENVIRONMENT_
 #define BAXTER_PICK_PLACE__CUSTOM_ENVIRONMENT_

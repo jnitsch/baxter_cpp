@@ -105,7 +105,7 @@ public:
     move_group_->setPlanningTime(30.0);
 
     // Load grasp generator
-    if (!grasp_data_.loadRobotGraspData(nh, arm_))
+    if (!grasp_data_.loadRobotGraspData(nh, arm_+"_hand"))
       ros::shutdown();
 
     // Load the Robot Viz Tools for publishing to rviz
@@ -160,7 +160,7 @@ public:
     }
 
     // Show grasp visualizations or not
-    visual_tools_->setMuted(false);
+    visual_tools_->setMuted(true);
 
     // Create the walls and tables
     createEnvironment(visual_tools_);

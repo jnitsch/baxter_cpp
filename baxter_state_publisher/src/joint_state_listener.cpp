@@ -37,8 +37,8 @@
 #include <urdf/model.h>
 #include <kdl/tree.hpp>
 #include <ros/ros.h>
-#include "robot_state_publisher/robot_state_publisher.h"
-#include "robot_state_publisher/joint_state_listener.h"
+#include "baxter_state_publisher/robot_state_publisher.h"
+#include "baxter_state_publisher/joint_state_listener.h"
 #include <kdl_parser/kdl_parser.hpp>
 
 
